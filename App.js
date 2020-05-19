@@ -10,13 +10,13 @@ import React from 'react';
 import { Provider } from 'react-redux';
 
 // Screens
-import TabNavigator from './navigators/TabNavigator';
+import TabNavigator from './src/navigators/TabNavigator';
 
 // Variables
-import store from './redux/store';
-import rootSaga from './redux/rootSaga';
-import { navigationRef } from './helpers';
-import { sagaMiddleware } from './redux/middlewares';
+import store from './src/redux/store';
+import rootSaga from './src/redux/rootSaga';
+import { navigationRef } from './src/utils/helpers';
+import { sagaMiddleware } from './src/redux/middlewares';
 import { NavigationContainer } from '@react-navigation/native';
 
 // SAGA

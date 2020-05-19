@@ -2,7 +2,7 @@ import { Alert } from 'react-native';
 import { takeLeading } from 'redux-saga/effects';
 
 import ActionTypes from './actions';
-import { navigationRef } from '../../helpers';
+import { navigationRef } from '../../utils/helpers';
 
 function* updateProfile(params) {
   Alert.alert('Update profile', 'The profile updated', [{ text: 'Ok', onPress: navigationRef.current?.goBack }], { cancelable: false });

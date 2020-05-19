@@ -15,6 +15,7 @@ import TabNavigator from './navigators/TabNavigator';
 // Variables
 import store from './redux/store';
 import rootSaga from './redux/rootSaga';
+import { navigationRef } from './helpers';
 import { sagaMiddleware } from './redux/middlewares';
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -24,7 +25,7 @@ sagaMiddleware.run(rootSaga);
 const App = () => {
   return (
     <Provider store={store}>
-      <NavigationContainer>
+      <NavigationContainer ref={navigationRef}>
         <TabNavigator />
       </NavigationContainer>
     </Provider>

@@ -31,6 +31,10 @@ class MainScreen extends React.Component {
   render = () => {
     const { user, products } = this.props;
 
+    const productTotalPrice = products.reduce(this.totalPriceReducer, 0);
+
+    const userCash = user.cash - productTotalPrice;
+
     return (
       <ScrollView style={styles.container}>
         <View style={[styles.shadow, styles.panel]}>
@@ -44,20 +48,22 @@ class MainScreen extends React.Component {
             <Text style={styles.field.text}>{user.birthday}</Text>
           </View>
           <View style={[styles.field.container]}>
-            <Text style={styles.field.text}>{`$${user.cash}`}</Text>
+            <Text style={styles.field.text}>{`$${userCash}`}</Text>
           </View>
         </View>
+
+        <TouchableRipple style={[styles.shadow, styles.button.touchable]} onPress={this.onPressEdit}>
+          <Text style={styles.button.text}>Update my profile</Text>
+        </TouchableRipple>
+
         <View style={[styles.shadow, styles.panel, { marginTop: 0 }]}>
           <View style={[styles.field.container, { flexDirection: 'row' }]}>
-            <Text style={[styles.field.text, { fontWeight: 'bold' }]}>History</Text>
+            <Text style={[styles.field.text, { fontWeight: 'bold' }]}>Shopping history</Text>
             <View style={styles.container} />
-            <Text style={styles.field.text}>{`Total price: ${products.reduce(this.totalPriceReducer, 0)}`}</Text>
+            <Text style={styles.field.text}>{`Total price: $${productTotalPrice}`}</Text>
           </View>
           {products.length > 0 && products.map(this.renderItem)}
         </View>
-        <TouchableRipple style={[styles.shadow, styles.button.touchable]} onPress={this.onPressEdit}>
-          <Text style={styles.button.text}>Update profile</Text>
-        </TouchableRipple>
       </ScrollView>
     );
   }
